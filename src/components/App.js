@@ -9,7 +9,8 @@ import "./App.css";
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
-import { uuid } from "uuidv4";
+import { uuid  } from "uuidv4";
+import ContactDetails from "./ContactDetails";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -48,8 +49,9 @@ function App() {
           <Route
             path="/"
             exact
-            component={() => (
+            render={(props) => (
               <ContactList
+                {...props}
                 contacts={contacts}
                 DeleteContactHandler={deleteContactHandler}
               />
@@ -57,10 +59,13 @@ function App() {
           />
           <Route
             path="/add"
-            component={() => (
-              <AddContact AddContactHandler={addContactHandler} />
+            render={(props) => (
+              <AddContact {...props} AddContactHandler={addContactHandler} />
             )}
           />
+          <Route
+            path="/contact/:id"
+            component={ContactDetails}/>
         </Switch>
       </Router>
     </div>

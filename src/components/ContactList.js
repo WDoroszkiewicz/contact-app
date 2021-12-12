@@ -9,6 +9,7 @@ const ContactList = (props) => {
     props.DeleteContactHandler(id);
   };
 
+
   const renderContactList = props.contacts.map((contact) => {
     return (
       <ContactCard
@@ -19,7 +20,7 @@ const ContactList = (props) => {
     );
   });
   return (
-    <div class="main">
+    <div className="main">
       <h2>Contact List
       </h2>
       <Link to="/add"><button className="ui button blue right">Add Contact</button></Link>
